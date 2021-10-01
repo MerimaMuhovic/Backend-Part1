@@ -1,0 +1,17 @@
+{
+    "name": "part1/backend",
+    "description": "backend",
+    "license": "apache2",
+    "autoload": {
+        "psr-4": {
+            "Part1\\Backend\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MerimaMuhovic",
+            "email": "merima.muhovic@hotmail.com"
+        }
+    ],
+    "require": {}
+}
