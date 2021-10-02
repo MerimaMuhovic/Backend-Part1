@@ -6,10 +6,6 @@ error_reporting(E_ALL);
 
 require_once dirname(__FILE__)."/dao/UserDao.class.php";
 
-$user_dao= new UserDao();
 
-$user= $user_dao->getUserByEmail("merima.muhovic@hotmail.com");
-
-print_r($user);
 
 ?>
