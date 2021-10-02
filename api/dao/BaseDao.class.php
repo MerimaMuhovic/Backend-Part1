@@ -5,6 +5,14 @@ error_reporting(E_ALL);
 
 require_once dirname(__FILE__)."/../config.php";
 
+/**
+* The main class for interaction with database.
+*
+* All other DAO classes should inherit this class.
+*
+* @author Merima Muhovic
+*/
+
 class BaseDao{
 
   protected $connection;
@@ -76,6 +84,15 @@ class BaseDao{
   
     public function get_by_id($id){
       return $this->query_unique("SELECT * FROM ".$this->table." WHERE id = :id", ["id" => $id]);
+    }
+
+    public function get_all($offset = 0, $limit = 25, $order="-id"){
+      list($order_column, $order_direction) = self::parse_order($order);
+  
+      return $this->query("SELECT *
+                           FROM ".$this->table."
+                           ORDER BY ${order_column} ${order_direction}
+                           LIMIT ${limit} OFFSET ${offset}", []);
     }
   
         

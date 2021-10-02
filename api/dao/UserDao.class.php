@@ -7,7 +7,7 @@ class UserDao extends BaseDao{
         parent::__construct("users");
       }
 
-    public function get_eser_by_email($email){
+    public function get_user_by_email($email){
 
         return $this->query("SELECT * FROM users WHERE email=:email", ["email"=>$email]);
   
