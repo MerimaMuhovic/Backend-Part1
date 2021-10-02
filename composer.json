@@ -13,5 +13,7 @@
             "email": "merima.muhovic@hotmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "mikecao/flight": "^1.3"
+    }
 }

@@ -4,10 +4,20 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+require_once dirname(__FILE__).'/../vendor/autoload.php';
+
 require_once dirname(__FILE__)."/dao/BaseDao.class.php";
 
-$merima = new BaseDao();
+Flight::route('/', function(){
+    echo 'hello world!';
+});
 
+Flight::start();
 
-echo "hallo from api";
+Flight::route('/hello2', function(){
+    echo 'hello world2!';
+});
+
+Flight::start();
+
 ?>
