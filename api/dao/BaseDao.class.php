@@ -18,10 +18,17 @@ class BaseDao{
         echo "Connected successfully";
       
       } catch(PDOException $e) {
-      echo "Connection failed: " . $e->getMessage();
+      throw$e;
+      
       }
     }
         
+
+    public function query($query, $params){
+      $stmt= $this->connection->prepare($query);
+      $stmt->execute($params);
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 
 }

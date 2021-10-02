@@ -1,8 +1,7 @@
 <?php
-
 require_once dirname(__FILE__)."/BaseDao.class.php";
 
-class PostDao extends BaseDao {
+class CommentDao extends BaseDao {
 
     
 }
