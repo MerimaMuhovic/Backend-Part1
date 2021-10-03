@@ -20,7 +20,9 @@ class UserServices extends BaseServices{
 
           $this->dao->commit();
 
-        } catch (Exception $e) {
+        } 
+        
+        catch (Exception $e) {
           $this->dao->rollBack();
 
           if (str_contains($e->getMessage(), 'users.uq_user_email')) {

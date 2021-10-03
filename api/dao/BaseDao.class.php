@@ -16,6 +16,17 @@ require_once dirname(__FILE__)."/../config.php";
 class BaseDao{
 
   protected $connection;
+  private $table;
+
+  public function commit(){
+
+    $this->connection->commit();
+  }
+
+  public function rollBack(){
+    
+    $response = $this->connection->rollBack();
+  }
 
     public function __construct(){
         

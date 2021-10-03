@@ -4,20 +4,17 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once dirname(__FILE__).'/../vendor/autoload.php';
 
-require_once dirname(__FILE__)."/dao/BaseDao.class.php";
+require_once dirname(__FILE__).'/services/UserService.class.php';
 
-Flight::route('/', function(){
-    echo 'hello world!';
-});
 
-Flight::start();
 
-Flight::route('/hello2', function(){
-    echo 'hello world2!';
-});
+Flight::set('flight.log_errors', TRUE);
 
-Flight::start();
+/* error handling for our API */
+    Flight::map('error', function(Exception $ex){
+    Flight::json(["message" => $ex->getMessage()], $ex->getCode() ? $ex->getCode() : 500);
+  });
+
 
 ?>
