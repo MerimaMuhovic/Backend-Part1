@@ -17,4 +17,21 @@ Flight::set('flight.log_errors', TRUE);
   });
 
 
+
+  Flight::route('GET /swagger', function(){
+    $openapi = @\OpenApi\scan(dirname(__FILE__)."/routes");
+    header('Content-Type: application/json');
+    echo $openapi->toJson();
+  });
+
+
+
+  /* include all routes */
+require_once dirname(__FILE__)."/routes/middleware.php";
+require_once dirname(__FILE__)."/routes/users.php";
+require_once dirname(__FILE__)."/routes/comment.php";
+require_once dirname(__FILE__)."/routes/post.php";
+
+Flight::start();
+
 ?>
